@@ -138,7 +138,7 @@ function quizStartFun() {
     console.log("Selected topic", selectedTopic);
     console.log("Selected level", choostopicLvl);
     questionAnswerDivParent.style.transform = "scale(1)";
-    let time = 10;
+    let time = 240;
 
     function updateTimer() {
       document.getElementById("timer").innerText = time;
