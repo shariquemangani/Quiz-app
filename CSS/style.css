@@ -106,6 +106,9 @@ nav {
   height: 100%;
   letter-spacing: 1px;
 }
+.navContentDiv ul a {
+  text-decoration: none;
+}
 
 .navContentDiv ul li {
   color: #848484;
@@ -228,7 +231,7 @@ button#mainContentLeftBtn:hover {
   display: flex;
   width: 100%;
   height: 100vh;
-  padding: 30px;
+  padding: 20px;
 }
 .loginMainLeft {
   box-shadow: 0px 0px 20px 0px rgb(238, 238, 238);
@@ -237,7 +240,7 @@ button#mainContentLeftBtn:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
   justify-content: center;
   overflow: hidden;
 }
@@ -261,7 +264,7 @@ button#mainContentLeftBtn:hover {
   width: 80%;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
 }
 .loginInputDiv {
   padding: 5px 20px;
@@ -423,7 +426,6 @@ button#mainContentLeftBtn:hover {
   width: 90%;
   display: flex;
   height: calc(100vh - 90px);
-  overflow-y: scroll;
   /* border: 1px solid black; */
 }
 .choosetopicsDetail::-webkit-scrollbar {
@@ -746,10 +748,10 @@ button#mainContentLeftBtn:hover {
 } */
 
 .quesAndAnsWrapperParent {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   width: 1000vw;
   display: flex;
-  overflow-x: scroll !important;
+  /* overflow-x: scroll !important; */
   /* transform: translate(-100vw); */
   transition: 0.5s ease-in-out;
 }
@@ -819,7 +821,7 @@ button#mainContentLeftBtn:hover {
 }
 .controlDiv {
   position: relative;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   padding: 10px 10px;
   width: 100%;
   /* box-shadow: 0px 0px 10.11339px 0px #ded7c4; */
@@ -908,7 +910,7 @@ button#mainContentLeftBtn:hover {
   display: flex;
   flex-direction: column;
   width: 70%;
-  height: 80%;
+  height: 100%;
   background-color: white;
 }
 .resultDivChildWrapper {
@@ -1063,6 +1065,9 @@ button#mainContentLeftBtn:hover {
   .navHamContentDiv {
     display: none !important;
   }
+  .forShadow {
+    overflow: hidden;
+  }
 }
 @media screen and (max-width: 1000px) {
   .mainContentRight {
@@ -1137,6 +1142,8 @@ button#mainContentLeftBtn:hover {
     height: fit-content;
   }
   .choosetopicsDetail {
+    overflow-y: scroll;
+
     height: 100%;
   }
   .controlDiv {

@@ -4,29 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>QuizGrad | About</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="icon" href="../images/titleIcon.PNG">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
-<body>
+<body data-aos="fade-In">
     <nav>
         <div class="navLogoDiv">
-            <img src="./images/NavLogo.svg" alt="" class="navLogo">
+            <img src="../images/NavLogo.svg" alt="" class="navLogo">
         </div>
         <div class="navContentDiv">
             <ul>
-                <li>Home <p class="activenavContentDivP"></p>
+                <a href="../index.html">
+                    <li>Home <p></p>
+                    </li>
+                </a>
+                <li>About Us <p class="activenavContentDivP">
+                    </p>
                 </li>
-                <li>About Us <p></p>
-                </li>
+                <!-- <a href="../Home/chooseTopic.html">
+                    <li>Choose Topic <p></p>
+                    </li>
+                </a> -->
                 <a href="./Home/login.html"><button id="navLoginBtn">Login</button></a>
             </ul>
         </div>
         <div class="hamIconDiv">
             <i class="fa-solid fa-bars hamIcon" style="color: #fcc822;" onclick="hamIconFunc()"></i>
         </div>
-
     </nav>
 
 </body>
+<script src="../JS/question.js"></script>
+<script src="../JS/index.js"></script>
+<script src="../JS/chooseTopic.js"></script>
+<script src="https://kit.fontawesome.com/a6f74557dd.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="https://kit.fontawesome.com/a6f74557dd.js" crossorigin="anonymous"></script>
 
 </html>

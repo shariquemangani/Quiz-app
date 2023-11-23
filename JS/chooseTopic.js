@@ -8,6 +8,45 @@ if (loggedInUserName) {
   console.log("User is not logged in");
 }
 
+let dateSpan = document.getElementById("dateSpan");
+let wholeDate = new Date();
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+const day = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let days = day[wholeDate.getDay()];
+let month = months[wholeDate.getMonth()];
+let year = wholeDate.getFullYear();
+let date = wholeDate.getDate();
+let liveTimeSpan = document.getElementById("liveTimeSpan");
+function liveTime() {
+  var d = new Date();
+  liveTimeSpan.innerHTML = d.toLocaleTimeString("en-US");
+}
+setInterval(function () {
+  liveTime();
+}, 1000);
+dateSpan.innerHTML = ` ${days}, ${month} ${date}, ${year} -`;
+
 let ChoostopicPopupParent = document.getElementById("ChoostopicPopupParent");
 let alltopic = document.querySelectorAll(".topics");
 let selectedTopic = "";
@@ -19,9 +58,6 @@ function showTopics() {
 function popupCancel() {
   ChoostopicPopupParent.style.transform = "scale(0)";
 }
-// setTimeout(() => {
-//   ChoostopicPopupParent.style.transform = "scale(1)";
-// }, 3000);
 let questionAnswerDivParent = document.querySelector(
   ".questionAnswerDivParent"
 );
@@ -55,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add event listeners for next and previous buttons
   const nextBtn = document.getElementById("nextBtn");
   const previousBtn = document.getElementById("previousBtn");
-
   nextBtn.addEventListener("click", () => {
     let currentIndex = getCurrentIndex();
     if (currentIndex < 9) {
@@ -91,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return i;
       }
     }
-    return 0; // Default to the first index
+    return 0;
   }
 
   // Helper function to update the progress bar
@@ -125,9 +160,11 @@ alltopic.forEach((topic, index) => {
     alltopic.forEach((topic) => {
       topic.style.backgroundColor = "#ddd";
       topic.style.boxShadow = "none";
+      topic.style.color = "black";
     });
     selectedTopic = alltopic[index].innerHTML;
     topic.style.backgroundColor = "#ffc400";
+    topic.style.color = "white";
   });
 });
 
@@ -177,13 +214,13 @@ function quizStartFun() {
   }
 
   let requiredquestions = questions.filter((question) => {
-    console.log("sudhvlbd", selectedTopic);
-    console.log("sudhvlbd", choostopicLvl);
+    // console.log("sudhvlbd", selectedTopic);
+    // console.log("sudhvlbd", choostopicLvl);
     return question.topic == selectedTopic && question.lvl == choostopicLvl;
   });
 
   let randomrequiredquestions = Math.floor(Math.random() * requiredquestions);
-  console.log(randomrequiredquestions);
+  // console.log(randomrequiredquestions);
 
   function getRandomQuestions(totalQuestions, numberToSelect) {
     const randomQuestions = [];
@@ -198,7 +235,7 @@ function quizStartFun() {
     return randomQuestions;
   }
   selectedQuestions = getRandomQuestions(requiredquestions, 10);
-  console.log("selectedQuestions ", selectedQuestions);
+  // console.log("selectedQuestions ", selectedQuestions);
   if (selectedQuestions == 5) {
   }
   qAndAParent.innerHTML = selectedQuestions
@@ -224,65 +261,125 @@ function quizStartFun() {
 }
 const selectedOptions = [];
 let answer;
+// function handleOptionClick(questionIndex, optionIndex) {
+//   console.log("questionIndex--", questionIndex, "optionIndex--", optionIndex);
+//   if (!selectedOptions[questionIndex]) {
+//     selectedOptions[questionIndex] = [];
+//   }
+//   const prevSelected = selectedOptions[questionIndex].pop();
+//   if (prevSelected !== undefined) {
+//     const prevSelectedOption = document.getElementById(
+//       `option-${questionIndex}-${prevSelected}`
+//     );
+//     prevSelectedOption.classList.remove("selected");
+//   }
+//   selectedOptions[questionIndex].push(optionIndex);
+//   const selectedOption = document.getElementById(
+//     `option-${questionIndex}-${optionIndex}`
+//   );
+//   selectedOption.classList.add("selected");
+//   console.log(
+//     `Question ${questionIndex + 1}, Option ${optionIndex + 1} selected`
+//   );
+//   console.log("selectedOption", selectedOption.innerHTML);
+//   console.log("stored", selectedOptions);
+//   checkAnswers();
+// }
+
 function handleOptionClick(questionIndex, optionIndex) {
-  console.log("questionIndex--", questionIndex, "optionIndex--", optionIndex);
+  // console.log("questionIndex--", questionIndex, "optionIndex--", optionIndex);
+
   if (!selectedOptions[questionIndex]) {
     selectedOptions[questionIndex] = [];
   }
-  const prevSelected = selectedOptions[questionIndex].pop();
-  if (prevSelected !== undefined) {
+
+  if (selectedOptions[questionIndex].length > 0) {
+    const prevSelected = selectedOptions[questionIndex].pop();
     const prevSelectedOption = document.getElementById(
       `option-${questionIndex}-${prevSelected}`
     );
     prevSelectedOption.classList.remove("selected");
   }
+
   selectedOptions[questionIndex].push(optionIndex);
   const selectedOption = document.getElementById(
     `option-${questionIndex}-${optionIndex}`
   );
   selectedOption.classList.add("selected");
-  console.log(
-    `Question ${questionIndex + 1}, Option ${optionIndex + 1} selected`
-  );
-  console.log("selectedOption", selectedOption.innerHTML);
-  console.log("stored", selectedOptions);
+
+  // console.log(
+  //   `Question ${questionIndex + 1}, Option ${optionIndex + 1} selected`
+  // );
+  // console.log("selectedOption", selectedOption.innerHTML);
+  // console.log("stored", selectedOptions);
   checkAnswers();
 }
+
 let selectedOption;
+// function checkAnswers() {
+//   let score = 0;
+//   for (let i = 0; i < selectedOptions.length; i++) {
+//     const question = selectedQuestions[i];
+//     const selectedOptionIndex = selectedOptions[i][0];
+
+//     if (selectedOptionIndex !== undefined) {
+//       selectedOption = question.options[selectedOptionIndex];
+
+//       if (selectedOption === question.answer) {
+//         score++;
+//         console.log("Correct selected option", selectedOption);
+//         console.log(`Question ${i + 1}: Correct!`);
+//       } else {
+//         console.log("Wrong selected option", selectedOption);
+
+//         console.log(`Question ${i + 1}: Incorrect!`);
+//       }
+//     }
+//   }
+//   let finalResult = document.getElementById("finalResult");
+//   finalResult.innerHTML = score;
+//   console.log(`Total Score: ${score} out of ${selectedQuestions.length}`);
+// }
+
 function checkAnswers() {
   let score = 0;
   for (let i = 0; i < selectedOptions.length; i++) {
-    const question = selectedQuestions[i];
-    const selectedOptionIndex = selectedOptions[i][0];
+    if (selectedOptions[i] && selectedOptions[i].length > 0) {
+      const question = selectedQuestions[i];
+      const selectedOptionIndex = selectedOptions[i][0];
 
-    if (selectedOptionIndex !== undefined) {
-      selectedOption = question.options[selectedOptionIndex];
-
-      if (selectedOption === question.answer) {
-        score++;
-        console.log("Correct selected option", selectedOption);
-        console.log(`Question ${i + 1}: Correct!`);
-      } else {
-        console.log("Wrong selected option", selectedOption);
-
-        console.log(`Question ${i + 1}: Incorrect!`);
+      if (selectedOptionIndex !== undefined && question && question.options) {
+        const selectedOption = question.options[selectedOptionIndex];
+        if (selectedOption === question.answer) {
+          score++;
+          // console.log("Correct selected option", selectedOption);
+          // console.log(`Question ${i + 1}: Correct!`);
+        } else {
+          // console.log("Wrong selected option", selectedOption);
+          // console.log(`Question ${i + 1}: Incorrect!`);
+        }
       }
     }
   }
   let finalResult = document.getElementById("finalResult");
-  finalResult.innerHTML = score;
+  if (finalResult) {
+    finalResult.innerHTML = score;
+  }
   console.log(`Total Score: ${score} out of ${selectedQuestions.length}`);
 }
+
 let resultDivParent = document.querySelector(".resultDivParent");
 function finishBtnFunc() {
-  resultDivParent.style.transform = "scale(1)";
+  if (confirm("Are you sure you want to Finish?")) {
+    resultDivParent.style.transform = "scale(1)";
+  }
 }
-function completeBtnFunc() {
-  resultDivParent.style.transform = "scale(0)";
-  setTimeout(() => {
-    location.href = "../index.html";
-  }, 400);
-}
+// function completeBtnFunc() {
+//   resultDivParent.style.transform = "scale(0)";
+//   setTimeout(() => {
+//     location.href = "../index.html";
+//   }, 400);
+// }
 function tryAgainBtnFunc() {
   console.log("hi");
   resultDivParent.style.transform = "scale(0)";
@@ -290,36 +387,6 @@ function tryAgainBtnFunc() {
     location.href = "../Home/chooseTopic.html";
   }, 400);
 }
-// function detailBtnFunc() {
-//   let detailDivParent = document.querySelector(".detailDivParent");
-//   detailDivParent.style.transform = `translate(0%)`;
-//   let resultDivChildSub = document.querySelector(".resultDivChildSub");
-//   resultDivChildSub.style.transform = `translate(100%)`;
-
-//   let detailDivChild = document.querySelector(".detailDivChild");
-//   detailDivChild.innerHTML = selectedQuestions
-//     .map((detailQues, i) => {
-//       return `
-//           <div class="detailDivChildSub">
-//                <h1 id="detailQuestion">Q.${
-//                  i + 1
-//                } <span id="detailQuestionSpan"> ${detailQues.question}</span>
-//                </h1>
-//                <div class="detailDivChildSubAnsDiv">
-//                ${detailQues.options
-//                  .map((detOption, k) => {
-//                    return `
-//                    <p class="detailDivAnswer">${detOption}</p>
-//                 `;
-//                  })
-//                  .join("")}
-
-//                </div>
-//           </div>
-//     `;
-//     })
-//     .join("");
-// }
 let resultDivChildWrapper = document.querySelector(".resultDivChildWrapper");
 function scoreBtnFunc() {
   resultDivChildWrapper.style.transform = `translate(0%)`;
