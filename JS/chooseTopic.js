@@ -1,364 +1,158 @@
+// console.log("q->", questions);
+// import { questions } from "./question.js";
+
+console.log(questions);
+let requiredquestions = questions.filter((question) => {
+  return question.topic === "maths" && question.lvl === 3;
+});
+
+console.log(requiredquestions);
+
 let navUserName = document.getElementById("navUserName");
 let welcomeUserName = document.getElementById("welcomeUserName");
-let loggedInUserName = localStorage.getItem("loggedInUser");
-if (loggedInUserName) {
-  navUserName.innerHTML = loggedInUserName;
-  welcomeUserName.innerHTML = loggedInUserName;
-} else {
-  console.log("User is not logged in");
-}
+loginName = localStorage.getItem("loginName");
+navUserName.innerHTML = loginName;
+welcomeUserName.innerHTML = loginName;
 
 let ChoostopicPopupParent = document.getElementById("ChoostopicPopupParent");
 let alltopic = document.querySelectorAll(".topics");
-let selectedTopic = "";
-let choostopicLvl;
 
+console.log(choostopicLvl);
+var math = false;
+var science = false;
+var historyOption = false;
 function showTopics() {
+  console.log(ChoostopicPopupParent);
   ChoostopicPopupParent.style.transform = "scale(1)";
 }
 function popupCancel() {
   ChoostopicPopupParent.style.transform = "scale(0)";
 }
-// setTimeout(() => {
-//   ChoostopicPopupParent.style.transform = "scale(1)";
-// }, 3000);
+setTimeout(() => {
+  ChoostopicPopupParent.style.transform = "scale(1)";
+}, 3000);
+let topicOne = document.getElementById("topicOne");
+let topicTwo = document.getElementById("topicTwo");
+let topicThree = document.getElementById("topicThree");
+
+function topic1() {
+  topicOne.style.backgroundColor = "#ffc400";
+  topicTwo.style.backgroundColor = "#d1d1d1";
+  topicThree.style.backgroundColor = "#d1d1d1";
+  math = true;
+  historyOption = false;
+  science = false;
+  alltopic.forEach((topic) => {
+    topic.style.boxShadow = "none";
+  });
+}
+function topic2() {
+  topicOne.style.backgroundColor = "#d1d1d1";
+  topicTwo.style.backgroundColor = "#ffc400";
+  topicThree.style.backgroundColor = "#d1d1d1";
+  science = true;
+  historyOption = false;
+  math = false;
+  alltopic.forEach((topic) => {
+    topic.style.boxShadow = "none";
+  });
+}
+function topic3() {
+  topicOne.style.backgroundColor = "#d1d1d1";
+  topicTwo.style.backgroundColor = "#d1d1d1";
+  topicThree.style.backgroundColor = "#ffc400";
+  historyOption = true;
+  math = false;
+  science = false;
+  alltopic.forEach((topic) => {
+    topic.style.boxShadow = "none";
+  });
+}
 let questionAnswerDivParent = document.querySelector(
   ".questionAnswerDivParent"
 );
+
 let qAndAParent = document.getElementById("qAndAParent");
 
-const progressBarRadioCustom = document.querySelectorAll(
-  ".progressBarRadioCustom"
-);
-let finishBtnDiv = document.querySelector(".finishBtnDiv");
+let NextBtn = document.getElementById("NextBtn");
+function previousBtnFunc() {
+  qAndAParent.style.transform = "translate(0vw)";
+}
+function nextBtnFunc() {
+  qAndAParent.style.transform = "translate(-100vw)";
+}
+let controlDiv = document.querySelector(".controlDiv");
+setTimeout(() => {
+  controlDiv.style.transform = "translate(0px)";
+}, 1000);
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Set the initial active dot color to yellow
-  progressBarRadioCustom[0].style.backgroundColor = "#ffc400";
+const progressBarNumbers = document.querySelectorAll(".progressBarNumber");
 
-  progressBarRadioCustom.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      qAndAParent.style.transform = `translateX(${-100 * index}vw)`;
-      progressBarRadioCustom.forEach((dot) => {
-        dot.style.backgroundColor = "#ddd";
-      });
-      progressBarRadioCustom[index].style.backgroundColor = "#ffc400";
-      console.log(index);
-      if (index === 9) {
-        finishBtnDiv.style.transform = `translate(0px)`;
-      } else {
-        finishBtnDiv.style.transform = `translate(300px)`;
-      }
-    });
-  });
+// let qAndAParent = document.getElementById("qAndAParent");
 
-  // Add event listeners for next and previous buttons
-  const nextBtn = document.getElementById("nextBtn");
-  const previousBtn = document.getElementById("previousBtn");
-
-  nextBtn.addEventListener("click", () => {
-    let currentIndex = getCurrentIndex();
-    if (currentIndex < 9) {
-      qAndAParent.style.transform = `translateX(${
-        -100 * (currentIndex + 1)
-      }vw)`;
-      updateProgressBar(currentIndex + 1);
-      if (currentIndex === 8) {
-        finishBtnDiv.style.transform = `translate(0px)`;
-      }
-    }
-  });
-
-  previousBtn.addEventListener("click", () => {
-    let currentIndex = getCurrentIndex();
-    if (currentIndex > 0) {
-      qAndAParent.style.transform = `translateX(${
-        -100 * (currentIndex - 1)
-      }vw)`;
-      updateProgressBar(currentIndex - 1);
-      if (currentIndex !== 8) {
-        finishBtnDiv.style.transform = `translate(300px)`;
-      }
-    }
-  });
-
-  // Helper function to get the current index
-  function getCurrentIndex() {
-    for (let i = 0; i < progressBarRadioCustom.length; i++) {
-      if (
-        progressBarRadioCustom[i].style.backgroundColor === "rgb(255, 196, 0)"
-      ) {
-        return i;
-      }
-    }
-    return 0; // Default to the first index
-  }
-
-  // Helper function to update the progress bar
-  function updateProgressBar(index) {
-    progressBarRadioCustom.forEach((dot) => {
-      dot.style.backgroundColor = "#ddd";
-    });
-    progressBarRadioCustom[index].style.backgroundColor = "#ffc400";
-  }
-});
-
-progressBarRadioCustom.forEach((button, index) => {
+progressBarNumbers.forEach((button, index) => {
   button.addEventListener("click", () => {
+    // change `the current slider
     qAndAParent.style.transform = `translateX(${-100 * index}vw)`;
-    progressBarRadioCustom.forEach((dot) => {
-      dot.style.backgroundColor = "#ddd";
-    });
-    progressBarRadioCustom[index].style.backgroundColor = "#ffc400";
-    console.log(index);
-    let finishBtnDiv = document.querySelector(".finishBtnDiv");
-    if (index === 9) {
-      finishBtnDiv.style.transform = `translate(0px)`;
-    } else {
-      finishBtnDiv.style.transform = `translate(300px)`;
-    }
+
+    // change the choosen product
+    // choosenProduct = products[index];
+
+    // change text of current products
+    // currentProductTitle.textContent = choosenProduct.title;
+    // currentProductPrice.textContent = "$" + choosenProduct.price;
+    // currentProductImg.src = choosenProduct.colors[0].img;
+
+    // currentProductColors.forEach((color, index) => {
+    //   color.style.backgroundColor = choosenProduct.colors[index].code;
+    // });
   });
 });
 
-alltopic.forEach((topic, index) => {
-  topic.addEventListener("click", () => {
-    alltopic.forEach((topic) => {
-      topic.style.backgroundColor = "#ddd";
-      topic.style.boxShadow = "none";
-    });
-    selectedTopic = alltopic[index].innerHTML;
-    topic.style.backgroundColor = "#ffc400";
-  });
-});
-
-let selectedQuestions;
 function quizStartFun() {
-  choostopicLvl = document.getElementById("choostopicLvl").value;
-  if (selectedTopic != "") {
-    console.log("Selected topic", selectedTopic);
-    console.log("Selected level", choostopicLvl);
+  let choostopicLvl = document.getElementById("choostopicLvl").value;
+  console.log("this lvl >", choostopicLvl);
+  if (math) {
+    console.log("math selected");
     questionAnswerDivParent.style.transform = "scale(1)";
-    let time = 10;
-
-    function updateTimer() {
-      document.getElementById("timer").innerText = time;
-      if (time <= 10) {
-        document.getElementById("timer").style.animation =
-          "clockAnime 2s infinite linear";
-        document.getElementById("timer").style.color = "red";
-      }
-      if (time == 0) {
-        document.getElementById("timer").style.animation = "none";
-        setTimeout(() => {
-          let timerFinish = document.querySelector(".timerFinish");
-
-          timerFinish.style.transform = `translate(0%)`;
-          setTimeout(() => {
-            timerFinish.style.transform = `translate(100%)`;
-          }, 2000);
-          setTimeout(() => {
-            finishBtnFunc();
-          }, 2000);
-        }, 1000);
-      }
-    }
-    function countdown() {
-      if (time > 0) {
-        time--;
-        updateTimer();
-      }
-    }
-    updateTimer();
-    setInterval(countdown, 1000);
+  } else if (science) {
+    questionAnswerDivParent.style.transform = "scale(1)";
+    console.log("science selected");
+  } else if (historyOption) {
+    questionAnswerDivParent.style.transform = "scale(1)";
+    console.log("history selected");
   } else {
     alltopic.forEach((topic) => {
       topic.style.boxShadow = "0px 0px 1px 1px red";
     });
   }
-
-  let requiredquestions = questions.filter((question) => {
-    console.log("sudhvlbd", selectedTopic);
-    console.log("sudhvlbd", choostopicLvl);
-    return question.topic == selectedTopic && question.lvl == choostopicLvl;
-  });
-
-  let randomrequiredquestions = Math.floor(Math.random() * requiredquestions);
-  console.log(randomrequiredquestions);
-
-  function getRandomQuestions(totalQuestions, numberToSelect) {
-    const randomQuestions = [];
-    const copyOfQuestions = [...requiredquestions]; // Make a copy to avoid modifying the original array
-
-    for (let i = 0; i < numberToSelect; i++) {
-      const randomIndex = Math.floor(Math.random() * copyOfQuestions.length);
-      const selectedQuestion = copyOfQuestions.splice(randomIndex, 1)[0];
-      randomQuestions.push(selectedQuestion);
-    }
-
-    return randomQuestions;
-  }
-  selectedQuestions = getRandomQuestions(requiredquestions, 10);
-  console.log("selectedQuestions ", selectedQuestions);
-  if (selectedQuestions == 5) {
-  }
-  qAndAParent.innerHTML = selectedQuestions
-    .map((ques, i) => {
+  qAndAParent.innerHTML = questions
+    .map((ques) => {
       return `
-    <div class="quesAndAnsWrapper" key=${i}>
+    <div class="quesAndAnsWrapper">
           <div class="questionDiv">
                  <h3>${ques.question}</h3>
            </div>
-           <div class="AnswerDiv">
-           ${ques.options
-             .map((option, j) => {
-               return `
-               <h4 class="ansOption" id="option-${i}-${j}" onclick="handleOptionClick(${i}, ${j})">${option}</h4>
-             `;
-             })
-             .join("")}
-       </div>
+            <div class="AnswerDiv">
+               <h4 class="ansOption">
+                  <span class="ansOptionAlph">A.</span>
+                   <p class="optionContent">${ques.options[0]}</p>
+               </h4>
+               <h4 class="ansOption">
+                   <span class="ansOptionAlph">B.</span>
+                   <p class="optionContent">${ques.options[1]}</p>
+               </h4>
+               <h4 class="ansOption">
+                   <span class="ansOptionAlph">C.</span>
+                   <p class="optionContent">${ques.options[2]}</p>
+               </h4>
+               <h4 class="ansOption">
+                   <span class="ansOptionAlph">D.</span>
+                   <p class="optionContent">${ques.options[3]}</p>
+               </h4>
+           </div>
       </div>
     `;
     })
     .join("");
 }
-const selectedOptions = [];
-let answer;
-function handleOptionClick(questionIndex, optionIndex) {
-  console.log("questionIndex--", questionIndex, "optionIndex--", optionIndex);
-  if (!selectedOptions[questionIndex]) {
-    selectedOptions[questionIndex] = [];
-  }
-  const prevSelected = selectedOptions[questionIndex].pop();
-  if (prevSelected !== undefined) {
-    const prevSelectedOption = document.getElementById(
-      `option-${questionIndex}-${prevSelected}`
-    );
-    prevSelectedOption.classList.remove("selected");
-  }
-  selectedOptions[questionIndex].push(optionIndex);
-  const selectedOption = document.getElementById(
-    `option-${questionIndex}-${optionIndex}`
-  );
-  selectedOption.classList.add("selected");
-  console.log(
-    `Question ${questionIndex + 1}, Option ${optionIndex + 1} selected`
-  );
-  console.log("selectedOption", selectedOption.innerHTML);
-  console.log("stored", selectedOptions);
-  checkAnswers();
-}
-let selectedOption;
-function checkAnswers() {
-  let score = 0;
-  for (let i = 0; i < selectedOptions.length; i++) {
-    const question = selectedQuestions[i];
-    const selectedOptionIndex = selectedOptions[i][0];
-
-    if (selectedOptionIndex !== undefined) {
-      selectedOption = question.options[selectedOptionIndex];
-
-      if (selectedOption === question.answer) {
-        score++;
-        console.log("Correct selected option", selectedOption);
-        console.log(`Question ${i + 1}: Correct!`);
-      } else {
-        console.log("Wrong selected option", selectedOption);
-
-        console.log(`Question ${i + 1}: Incorrect!`);
-      }
-    }
-  }
-  let finalResult = document.getElementById("finalResult");
-  finalResult.innerHTML = score;
-  console.log(`Total Score: ${score} out of ${selectedQuestions.length}`);
-}
-let resultDivParent = document.querySelector(".resultDivParent");
-function finishBtnFunc() {
-  resultDivParent.style.transform = "scale(1)";
-}
-function completeBtnFunc() {
-  resultDivParent.style.transform = "scale(0)";
-  setTimeout(() => {
-    location.href = "../index.html";
-  }, 400);
-}
-function tryAgainBtnFunc() {
-  console.log("hi");
-  resultDivParent.style.transform = "scale(0)";
-  setTimeout(() => {
-    location.href = "../Home/chooseTopic.html";
-  }, 400);
-}
-// function detailBtnFunc() {
-//   let detailDivParent = document.querySelector(".detailDivParent");
-//   detailDivParent.style.transform = `translate(0%)`;
-//   let resultDivChildSub = document.querySelector(".resultDivChildSub");
-//   resultDivChildSub.style.transform = `translate(100%)`;
-
-//   let detailDivChild = document.querySelector(".detailDivChild");
-//   detailDivChild.innerHTML = selectedQuestions
-//     .map((detailQues, i) => {
-//       return `
-//           <div class="detailDivChildSub">
-//                <h1 id="detailQuestion">Q.${
-//                  i + 1
-//                } <span id="detailQuestionSpan"> ${detailQues.question}</span>
-//                </h1>
-//                <div class="detailDivChildSubAnsDiv">
-//                ${detailQues.options
-//                  .map((detOption, k) => {
-//                    return `
-//                    <p class="detailDivAnswer">${detOption}</p>
-//                 `;
-//                  })
-//                  .join("")}
-
-//                </div>
-//           </div>
-//     `;
-//     })
-//     .join("");
-// }
-let resultDivChildWrapper = document.querySelector(".resultDivChildWrapper");
-function scoreBtnFunc() {
-  resultDivChildWrapper.style.transform = `translate(0%)`;
-}
-function detailBtnFunc() {
-  resultDivChildWrapper.style.transform = `translate(-50%)`;
-  let detailDivChild = document.querySelector(".detailDivChild");
-  detailDivChild.innerHTML = selectedQuestions
-    .map((detailQues, i) => {
-      return `
-          <div class="detailDivChildSub">
-               <h1 id="detailQuestion">Q.${
-                 i + 1
-               } <span id="detailQuestionSpan"> ${detailQues.question}</span>
-               </h1>
-               <div class="detailDivChildSubAnsDiv">
-               ${detailQues.options
-                 .map((detOption, k) => {
-                   const isCorrect =
-                     selectedOptions[i] &&
-                     selectedOptions[i][0] === k &&
-                     detailQues.answer === detOption;
-
-                   return `
-                   <p class="detailDivAnswer" style="border: 5px solid ${
-                     isCorrect
-                       ? "green"
-                       : selectedOptions[i] && selectedOptions[i][0] === k
-                       ? "red"
-                       : "#d1d1d1"
-                   };">${detOption}</p>
-                `;
-                 })
-                 .join("")}
-               </div>
-          </div>
-    `;
-    })
-    .join("");
-}
-
-//////////////////////////////
