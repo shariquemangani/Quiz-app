@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizGrad | Login</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="icon" href="../images/titleIcon.PNG">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="loginMain" data-aos="fade-In">
+        <div class="loginMainLeft">
+            <a href="../index.html" class="loginMainLeftImg"> <img src="../images/NavLogo.svg" alt=""></a>
+            <div class="LoginText">
+                <p>Welcome back!</p>
+                <p> Please login to your account.</p>
+            </div>
+            <form>
+                <div class="loginInputDiv redbor">
+                    <label for="loginName">First Name</label>
+                    <input type="text" maxlength="20" id="loginName" placeholder="enter first name...." required>
+                </div>
+                <div class="loginInputDiv redbor">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" maxlength="30" id="loginEmail" placeholder="enter email...." required>
+                </div>
+                <div class="loginInputDiv redbor">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" maxlength="30" id="loginPassword" placeholder="enter your password..."
+                        required>
+                </div>
+                <div class="loginSelectionDiv">
+                    <div class="loginSelectionDivSub1">
+                        <input type="checkbox" id="loginCheckbox">
+                        <label for="loginCheckbox">Remember</label>
+                    </div>
+                    <div class="loginSelectionDivSub2">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                </div>
+
+                <!-- login button -->
+                <div class="loginBtnDiv">
+                    <a href="#" onclick="loginBtn()"> Login</a>
+                </div>
+
+                <div class="loginOtherLink">
+                    <p>Or Login with</p>
+                    <div>
+                        <a href="#">Google</a>
+                        <a href="#">Facebook</a>
+                    </div>
+                </div>
+
+            </form>
+            <div class="loginMainbgAnime">
+                <img src="../images/loginRightLogo.svg" alt="" class="loginMainbgAnimeImg">
+            </div>
+        </div>
+        <div class="loginMainRight">
+            <img src="../images/loginRightLogo.svg" alt="" class="loginMainRightImg">
+        </div>
+    </div>
+
+</body>
+<script src="../JS/login.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="https://kit.fontawesome.com/a6f74557dd.js" crossorigin="anonymous"></script>
+
+</html>

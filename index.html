@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizGrad</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="icon" href="./images/titleIcon.PNG">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body data-aos="fade-In">
+
+    <nav>
+        <div class="navLogoDiv">
+            <img src="./images/NavLogo.svg" alt="" class="navLogo">
+        </div>
+        <div class="navContentDiv">
+            <ul>
+                <li>Home <p class="activenavContentDivP"></p>
+                </li>
+                <li>About Us <p></p>
+                </li>
+                <a href="./Home/login.html"><button id="navLoginBtn">Login</button></a>
+            </ul>
+        </div>
+        <div class="hamIconDiv">
+            <i class="fa-solid fa-bars hamIcon" style="color: #fcc822;" onclick="hamIconFunc()"></i>
+        </div>
+
+    </nav>
+
+    <div class="mainContent">
+        <div id="navHamContentDiv" class="navHamContentDiv">
+            <div class="navHamContent">
+                <a href="#">
+                    <h2 class="activeNavInHam">Home</h2>
+                </a>
+                <a href="#">
+                    <h2>About Us</h2>
+                </a>
+            </div>
+            <a href="./Home/login.html"><button id="navLoginBtn">Login</button></a>
+        </div>
+        <div class="mainContentLeft">
+            <div class="mainContentLeftSub">
+                <img src="./images/mainBottomDesign.svg" alt="" class="mainContentBottomDesign">
+
+                <h1>Learn <br>
+                    new concepts <br>
+                    for each question</h1>
+                <p>We help you prepare for exams and quizes </p>
+                <a href="./Home/login.html"><button id="mainContentLeftBtn">Start solving</button></a>
+            </div>
+        </div>
+        <div class="mainContentRight">
+            <img src="./images/MainLogo.svg" alt="" class="mainContentRightImg">
+        </div>
+    </div>
+</body>
+<script src="./JS/index.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="https://kit.fontawesome.com/a6f74557dd.js" crossorigin="anonymous"></script>
+
+</html>
