@@ -4,42 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Your Best Website</title>
     <style>
+        /* Add your own styling here */
         body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
             margin: 0;
-            background-color: #ffffcc;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
         }
 
-        #timer {
-            font-family: Arial, sans-serif;
-            font-size: 2em;
-            color: #333;
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .slider {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .section {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .card {
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
         }
     </style>
-    <title>Countdown Timer</title>
 </head>
 
 <body>
 
-    <div id="timer">60</div>
-    <script>
-        let time = 60;
-        function updateTimer() {
-            document.getElementById('timer').innerText = time;
-        }
-        function countdown() {
-            if (time > 0) {
-                time--;
-                updateTimer();
-            }
-        }
-        updateTimer();
-        setInterval(countdown, 1000);
-    </script>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content Slider -->
+    <div class="slider">
+        <div class="slide" style="background-image: url('image1.jpg');"></div>
+        <div class="slide" style="background-image: url('image2.jpg');"></div>
+        <div class="slide" style="background-image: url('image3.jpg');"></div>
+    </div>
+
+    <!-- Home Section -->
+    <section id="home" class="section">
+        <h2>Welcome to Your Best Website</h2>
+        <p>This is the home page with some awesome content!</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <p>Learn more about our amazing company and team.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Get in touch with us. We'd love to hear from you!</p>
+    </section>
+
+    <!-- Card Section -->
+    <div class="card-container">
+        <!-- 20 Cards with Random Content -->
+        <!-- Example Card -->
+        <div class="card">
+            <img src="card_image1.jpg" alt="Card Image">
+            <p>Random Content 1</p>
+        </div>
+        <!-- Repeat this structure for additional cards -->
+    </div>
 
 </body>
 

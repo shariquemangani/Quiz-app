@@ -7,9 +7,10 @@
     <title>QuizGrad</title>
     <link rel="stylesheet" href="./CSS/style.css">
     <link rel="icon" href="./images/titleIcon.PNG">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
-<body>
+<body data-aos="fade-In">
 
     <nav>
         <div class="navLogoDiv">
@@ -17,16 +18,31 @@
         </div>
         <div class="navContentDiv">
             <ul>
-                <li>Home <p></p>
+                <li>Home <p class="activenavContentDivP"></p>
                 </li>
                 <li>About Us <p></p>
                 </li>
                 <a href="./Home/login.html"><button id="navLoginBtn">Login</button></a>
             </ul>
         </div>
+        <div class="hamIconDiv">
+            <i class="fa-solid fa-bars hamIcon" style="color: #fcc822;" onclick="hamIconFunc()"></i>
+        </div>
+
     </nav>
 
     <div class="mainContent">
+        <div id="navHamContentDiv" class="navHamContentDiv">
+            <div class="navHamContent">
+                <a href="#">
+                    <h2 class="activeNavInHam">Home</h2>
+                </a>
+                <a href="#">
+                    <h2>About Us</h2>
+                </a>
+            </div>
+            <a href="./Home/login.html"><button id="navLoginBtn">Login</button></a>
+        </div>
         <div class="mainContentLeft">
             <div class="mainContentLeftSub">
                 <img src="./images/mainBottomDesign.svg" alt="" class="mainContentBottomDesign">
@@ -43,6 +59,11 @@
         </div>
     </div>
 </body>
-
+<script src="./JS/index.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="https://kit.fontawesome.com/a6f74557dd.js" crossorigin="anonymous"></script>
 
 </html>

@@ -7,22 +7,11 @@
     <title>QuizGrad | Choose Topics</title>
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="icon" href="../images/titleIcon.PNG">
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="controlDiv">
-        <div class="controlDivSub">
 
-            <!-- <button id="previousBtn " onclick="previousBtnFunc()" class="bottomBtnControls"><i
-                    class="fa-solid fa-caret-left" style="color: #333;"></i> Previous</button> -->
-            <div class="timerDiv">
-                <span id="timer" class="timerSpan">60</span>
-            </div>
-            <!-- <button id="NextBtn" onclick="nextBtnFunc()" class="bottomBtnControls">Next <i
-                        class="fa-solid fa-caret-right" style="color: #333;"></i></button> -->
-        </div>
-    </div>
 
     <nav>
         <div class="navLogoDiv">
@@ -30,7 +19,7 @@
         </div>
         <div class="navContentDiv">
             <ul>
-                <li>Home <p></p>
+                <li>Home <p class="activenavContentDivP"></p>
                 </li>
                 <li>About Us <p></p>
                 </li>
@@ -40,200 +29,302 @@
                 </h2>
             </ul>
         </div>
+        <div class="hamIconDiv">
+            <i class="fa-solid fa-bars hamIcon" style="color: #fcc822;" onclick="hamIconFunc()"></i>
+        </div>
+
     </nav>
 
     <div class="choosetopicsMain">
+        <div id="navHamContentDiv" class="navHamContentDiv">
+            <div class="navHamContent">
+                <a href="#">
+                    <h2 class="activeNavInHam">Home</h2>
+                </a>
+                <a href="#">
+                    <h2>About Us</h2>
+                </a>
+            </div>
+            <a href="./Home/login.html"><button id="navLoginBtn">Login</button></a>
+        </div>
         <img src="../images/mainBottomDesign.svg" alt="" class="mainContentBottomDesign">
-        <div class="choosetopicsSub">
-            <h1>Hi, <span style="color: #ffc400;" id="welcomeUserName"> Sharique</span></h1>
-            <div class="choosetopicsSubContent">
-                <p> Welcome to <img src="../images/NavLogo.svg" alt=""></p>
-                <a href="#" onclick="showTopics()">Choose Topics</a>
+
+        <div class="choosetopicsDetail">
+            <div class="forShadow">
+
+                <div class="choosetopicsLeft">
+                    <div class="choosetopicsLeftContent">
+                        <h1>Quiz Rules</h1>
+                        <p>1. This quiz consists of multiple-choice questions.</p>
+                        <p>2. To be successful with the quizzes, it's important to be conversant with the topics.</p>
+                        <p>3. Each multiple choice question has only one correct answer.</p>
+                        <p>4. To win the quiz you need to score more than 70%.</p>
+                        <p>5. To start, click the Start button. When finished, click the Submit button</p>
+                    </div>
+                    <div class="choosetopicsLeftContent">
+                        <h1>Details</h1>
+                        <h3>
+                            <span class="detailSpan1">Date:</span>
+                            <span class="detailSpan2">Friday, June 10, 2022</span>
+                        </h3>
+                        <h3>
+                            <span class="detailSpan1">Time Limit:</span>
+                            <span class="detailSpan2"> 4 Minutes</span>
+                        </h3>
+                        <h3>
+                            <span class="detailSpan1">Points:</span>
+                            <span class="detailSpan2"> 10 Points</span>
+                        </h3>
+                        <h3>
+                            <span class="detailSpan1">Questions:</span>
+                            <span class="detailSpan2"> 10 Questions</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="choosetopicsRight">
+
+                    <div class="choosetopicsRightImgDiv">
+                        <img src="../images/loginRightLogo.svg" alt="" class="loginMainRightImg">
+                    </div>
+                    <h1>Hi, <span style="color: #ffc400;" id="welcomeUserName"> Sharique</span></h1>
+                    <p> Welcome to <img src="../images/NavLogo.svg" alt=""></p>
+                    <a href="#" onclick="showTopics()">Choose Topics</a>
+                    <!-- <div class="choosetopicsRightContent">
+                </div> -->
+                </div>
+                <div id="ChoostopicPopupParent" class="ChoostopicPopupParentDiv">
+                    <div id="ChoostopicPopupCancel" onclick="popupCancel()"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="choosetopicsRightImgDiv">
+                        <img src="../images/loginRightLogo.svg" alt="" class="loginMainRightImg">
+                    </div>
+
+                    <div class="ChoostopicPopup">
+                        <h1 class="ChoostopicPopupHeading">Choose your favourite topic</h1>
+                        <div class="topicsDiv">
+                            <div id="topicOne" class="topics">Maths</div>
+                            <div id="topicTwo" class="topics">Science</div>
+                            <div id="topicThree" class="topics">History</div>
+                        </div>
+                        <div class="ChoostopicPopupBtnDiv">
+                            <select name="quizLvl" id="choostopicLvl">
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                            <button id="ChoostopicPopupBtn" onclick="quizStartFun()">Start Quiz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="questionAnswerDivParent">
+                <img src="../images/mainBottomDesign.svg" alt="" class="quesAndAnsParentDesign">
+                <div class="questionAnswerDiv">
+                    <div class="quesAndAnsWrapperParent" id="qAndAParent">
+                        <div class="quesAndAnsWrapper" key="1">
+                            <div class="questionDiv">
+                                <h3>1st</h3>
+                            </div>
+                            <div class="AnswerDiv">
+                                <h4 class="ansOption">
+                                    FIGMA
+                                </h4>
+                                <h4 class="ansOption">
+                                    ADOBE XD
+                                </h4>
+                                <h4 class="ansOption">
+                                    INVISION
+                                </h4>
+                                <h4 class="ansOption">
+                                    SKETCH
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="quesAndAnsWrapper" key="2">
+                            <div class="questionDiv">
+                                <h3>2nd</h3>
+                            </div>
+                            <div class="AnswerDiv">
+                                <h4 class="ansOption">
+                                    FIGMA
+                                </h4>
+                                <h4 class="ansOption">
+                                    ADOBE XD
+                                </h4>
+                                <h4 class="ansOption">
+                                    INVISION
+                                </h4>
+                                <h4 class="ansOption">
+                                    SKETCH
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="quesAndAnsWrapper" key="3">
+                            <div class="questionDiv">
+                                <h3>3rd</h3>
+                            </div>
+                            <div class="AnswerDiv">
+                                <h4 class="ansOption">
+                                    FIGMA
+                                </h4>
+                                <h4 class="ansOption">
+                                    ADOBE XD
+                                </h4>
+                                <h4 class="ansOption">
+                                    INVISION
+                                </h4>
+                                <h4 class="ansOption">
+                                    SKETCH
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="quesAndAnsWrapper" key="4">
+                            <div class="questionDiv">
+                                <h3>4th</h3>
+                            </div>
+                            <div class="AnswerDiv">
+                                <h4 class="ansOption">
+                                    FIGMA
+                                </h4>
+                                <h4 class="ansOption">
+                                    ADOBE XD
+                                </h4>
+                                <h4 class="ansOption">
+                                    INVISION
+                                </h4>
+                                <h4 class="ansOption">
+                                    SKETCH
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="quesAndAnsWrapper">
+                            <div class="questionDiv">
+                                <h3>5th</h3>
+                            </div>
+                            <div class="AnswerDiv">
+                                <h4 class="ansOption">
+                                    FIGMA
+                                </h4>
+                                <h4 class="ansOption">
+                                    ADOBE XD
+                                </h4>
+                                <h4 class="ansOption">
+                                    INVISION
+                                </h4>
+                                <h4 class="ansOption">
+                                    SKETCH
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="questionTrack">
+                        <!-- <div class="backline"></div> -->
+                        <div class="questionTrackWrapper">
+
+                            <div id="previousBtn">Previous</div>
+
+                            <input class="progressBarRadio" type="radio" name="progressBarRadio" id="1">
+                            <label for="1" class="progressBarRadioCustom"></label>
+                            <input class="progressBarRadio" type="radio" name="progressBarRadio" id="2">
+                            <label for="2" class="progressBarRadioCustom"></label>
+                            <input class="progressBarRadio" type="radio" name="progressBarRadio" id="3">
+                            <label for="3" class="progressBarRadioCustom"></label>
+                            <input class="progressBarRadio" type="radio" name="progressBarRadio" id="4">
+                            <label for="4" class="progressBarRadioCustom"></label>
+                            <input class="progressBarRadio" type="radio" name="progressBarRadio" id="5">
+                            <label for="5" class="progressBarRadioCustom"></label>
+                            <input class="progressBarRadio" type="radio" name="progressBarRadio" id="6">
+                            <label for="6" class="progressBarRadioCustom"></label>
+                            <input class="progressBarRadio" type="radio" name="progressBarRadio" id="7">
+                            <label for="7" class="progressBarRadioCustom"></label>
+                            <input class="progressBarRadio" type="radio" name="progressBarRadio" id="8">
+                            <label for="8" class="progressBarRadioCustom"></label>
+                            <input class="progressBarRadio" type="radio" name="progressBarRadio" id="9">
+                            <label for="9" class="progressBarRadioCustom"></label>
+                            <input class="progressBarRadio" type="radio" name="progressBarRadio" id="10">
+                            <label for="10" class="progressBarRadioCustom"></label>
+
+                            <div id="nextBtn">Next</div>
+                        </div>
+
+                        <div class="controlDiv">
+                            <div class="controlDivSub">
+                                <div class="timerDiv">
+                                    <span id="timer" class="timerSpan"></span>
+                                </div>
+                            </div>
+                            <div class="finishBtnDiv">
+                                <button id="finishBtn" onclick="finishBtnFunc()">Finish</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timerFinish">
+                        <h1>Time Finished</h1>
+                    </div>
+
+
+                </div>
             </div>
         </div>
-        <div id="ChoostopicPopupParent">
 
-            <div class="ChoostopicPopup">
-                <div id="ChoostopicPopupCancel" onclick="popupCancel()"><i class="fa-solid fa-xmark"></i></div>
-                <h1 class="ChoostopicPopupHeading">Choose your favourite topic</h1>
-                <div class="topicsDiv">
-                    <div id="topicOne" class="topics" onclick="topic1()">Maths</div>
-                    <div id="topicTwo" class="topics" onclick="topic2()">Science</div>
-                    <div id="topicThree" class="topics" onclick="topic3()">History</div>
+    </div>
+    <div class="resultDivParent">
+        <div class="resultDivChild">
+            <div class="resultDivChildWrapper">
+                <div class="resultDivChildSub">
+                    <img src="../images/resultBg.svg" alt="" class="resultBgImg">
+                    <h2>Your Score</h2>
+                    <h1 id="finalResult">0</h1>
                 </div>
-                <select name="quizLvl" id="choostopicLvl">
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
-                </select>
-                <button id="ChoostopicPopupBtn" onclick="quizStartFun()">Start Quiz</button>
+                <div class="detailDivParent">
+                    <div class="detailDivChild">
+                        <div class="detailDivChildSub">
+                            <h1 id="detailQuestion">Q.1 <span id="detailQuestionSpan"> What is the result of 5 +
+                                    3?</span>
+                            </h1>
+                            <div class="detailDivChildSubAnsDiv">
+                                <p class="detailDivAnswer">7</p>
+                                <p class="detailDivAnswer">8</p>
+                                <p class="detailDivAnswer">6</p>
+                                <p class="detailDivAnswer">9</p>
+                            </div>
+                        </div>
+                        <div class="detailDivChildSub">
+                            <h1 id="detailQuestion">Q.2 <span id="detailQuestionSpan"> What is the result of 5 +
+                                    3?</span>
+                            </h1>
+                            <div class="detailDivChildSubAnsDiv">
+                                <p class="detailDivAnswer">7</p>
+                                <p class="detailDivAnswer">8</p>
+                                <p class="detailDivAnswer">6</p>
+                                <p class="detailDivAnswer">9</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="questionAnswerDivParent">
-            <img src="../images/mainBottomDesign.svg" alt="" class="quesAndAnsParentDesign">
-            <div class="questionAnswerDiv">
-                <div class="quesAndAnsWrapperParent" id="qAndAParent">
-                    <!-- <div class="quesAndAnsWrapper">
-                        <div class="questionDiv">
-                            <h3>1st</h3>
-                        </div>
-                        <div class="AnswerDiv">
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">A.</span>
-                                <p class="optionContent">FIGMA</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">B.</span>
-                                <p class="optionContent">ADOBE XD</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">C.</span>
-                                <p class="optionContent">INVISION</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">D.</span>
-                                <p class="optionContent">SKETCH</p>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="quesAndAnsWrapper">
-                        <div class="questionDiv">
-                            <h3>2nd</h3>
-                        </div>
-                        <div class="AnswerDiv">
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">A.</span>
-                                <p class="optionContent">FIGMA</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">B.</span>
-                                <p class="optionContent">ADOBE XD</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">C.</span>
-                                <p class="optionContent">INVISION</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">D.</span>
-                                <p class="optionContent">SKETCH</p>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="quesAndAnsWrapper">
-                        <div class="questionDiv">
-                            <h3>3rd</h3>
-                        </div>
-                        <div class="AnswerDiv">
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">A.</span>
-                                <p class="optionContent">FIGMA</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">B.</span>
-                                <p class="optionContent">ADOBE XD</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">C.</span>
-                                <p class="optionContent">INVISION</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">D.</span>
-                                <p class="optionContent">SKETCH</p>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="quesAndAnsWrapper">
-                        <div class="questionDiv">
-                            <h3>4th</h3>
-                        </div>
-                        <div class="AnswerDiv">
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">A.</span>
-                                <p class="optionContent">FIGMA</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">B.</span>
-                                <p class="optionContent">ADOBE XD</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">C.</span>
-                                <p class="optionContent">INVISION</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">D.</span>
-                                <p class="optionContent">SKETCH</p>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="quesAndAnsWrapper">
-                        <div class="questionDiv">
-                            <h3>5th</h3>
-                        </div>
-                        <div class="AnswerDiv">
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">A.</span>
-                                <p class="optionContent">FIGMA</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">B.</span>
-                                <p class="optionContent">ADOBE XD</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">C.</span>
-                                <p class="optionContent">INVISION</p>
-                            </h4>
-                            <h4 class="ansOption">
-                                <span class="ansOptionAlph">D.</span>
-                                <p class="optionContent">SKETCH</p>
-                            </h4>
-                        </div>
-                    </div> -->
+            <div class="ResultBtnDiv">
+                <div class="ResultBtnDivLeft ">
+                    <button id="scoreBtn" onclick="scoreBtnFunc()">Score</button>
+                    <button id="detailBtn" onclick="detailBtnFunc()">Details</button>
                 </div>
-                <div class="questionTrack">
-                    <!-- <div class="backline"></div> -->
-                    <p class="progressBarNumber">Page 1</p>
-                    <p class="progressBarNumber">Page 2</p>
-                    <p class="progressBarNumber">Page 3</p>
-                    <p class="progressBarNumber">Page 4</p>
-                    <p class="progressBarNumber">Page 5</p>
+                <div class="ResultBtnDivRight">
+                    <button id="tryAgainBtn" onclick="tryAgainBtnFunc()">Try Again</button>
+                    <button id="completeBtn" onclick="completeBtnFunc()">Complete</button>
                 </div>
-
-
-
             </div>
         </div>
     </div>
 
 </body>
-<!-- <script src="../JS/question.js"></script> -->
-<script>
-    let time = 120;
-
-    function updateTimer() {
-        document.getElementById('timer').innerText = time;
-        if (time <= 10) {
-            document.getElementById('timer').style.animation = "clockAnime 2s infinite linear";
-            document.getElementById('timer').style.color = "red";
-        } if (time == 0) {
-            document.getElementById('timer').style.animation = "none";
-            setTimeout(() => {
-
-                alert("Test is over")
-            }, 1000);
-        }
-    }
-    function countdown() {
-        if (time > 0) {
-            time--;
-            updateTimer();
-        }
-    }
-    updateTimer();
-    setInterval(countdown, 1000);
-</script>
-<!-- <script src="../JS/question.js"></script> -->
 <script src="../JS/question.js"></script>
+<script src="../JS/index.js"></script>
 <script src="../JS/chooseTopic.js"></script>
+<script src="https://kit.fontawesome.com/a6f74557dd.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 <script src="https://kit.fontawesome.com/a6f74557dd.js" crossorigin="anonymous"></script>
 
 </html>
