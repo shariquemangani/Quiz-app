@@ -131,7 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const nextBtn = document.getElementById("nextBtn");
   const previousBtn = document.getElementById("previousBtn");
-
   nextBtn.addEventListener("click", () => {
     let currentIndex = getCurrentIndex();
     if (currentIndex < 9) {
