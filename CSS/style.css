@@ -106,6 +106,9 @@ nav {
   height: 100%;
   letter-spacing: 1px;
 }
+.navContentDiv ul a {
+  text-decoration: none;
+}
 
 .navContentDiv ul li {
   color: #848484;
@@ -228,7 +231,7 @@ button#mainContentLeftBtn:hover {
   display: flex;
   width: 100%;
   height: 100vh;
-  padding: 30px;
+  padding: 20px;
 }
 .loginMainLeft {
   box-shadow: 0px 0px 20px 0px rgb(238, 238, 238);
@@ -237,7 +240,7 @@ button#mainContentLeftBtn:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
   justify-content: center;
   overflow: hidden;
 }
@@ -261,7 +264,7 @@ button#mainContentLeftBtn:hover {
   width: 80%;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
 }
 .loginInputDiv {
   padding: 5px 20px;
@@ -423,7 +426,6 @@ button#mainContentLeftBtn:hover {
   width: 90%;
   display: flex;
   height: calc(100vh - 90px);
-  overflow-y: scroll;
   /* border: 1px solid black; */
 }
 .choosetopicsDetail::-webkit-scrollbar {
@@ -675,6 +677,7 @@ button#mainContentLeftBtn:hover {
   gap: 20px;
 }
 .questionTrackWrapper {
+  /* border: 1px solid black; */
   margin: 0px auto;
   margin-top: 20px;
   position: relative;
@@ -710,6 +713,9 @@ button#mainContentLeftBtn:hover {
   background-color: #ffc400;
 }
 #previousBtn {
+  margin: 0px 10px;
+  position: absolute;
+  right: 110%;
   background-color: #ffc400;
   display: flex;
   align-items: center;
@@ -720,12 +726,17 @@ button#mainContentLeftBtn:hover {
   color: white;
   font-weight: bold;
   box-shadow: 0px 9.50103px 21.11339px -6.33402px #fbe18f;
+  transform: scale(0);
   transition: 0.3s;
 }
 #previousBtn:hover {
   box-shadow: 0px 9.50103px 21.11339px -6.33402px #c0a753;
 }
 #nextBtn {
+  margin: 0px 10px;
+  z-index: 1;
+  position: absolute;
+  left: 110%;
   background-color: #ffc400;
   display: flex;
   align-items: center;
@@ -741,15 +752,41 @@ button#mainContentLeftBtn:hover {
 #nextBtn:hover {
   box-shadow: 0px 9.50103px 21.11339px -6.33402px #c0a753;
 }
+.finishBtnDiv {
+  margin: 0px 10px;
+  position: absolute;
+  left: 110%;
+  /* transform: translate(300px); */
+  transition: 0.5s;
+  /* border: 1px solid black; */
+
+  #finishBtn {
+    /* border: 1px solid black; */
+    /* padding: 10px 20px; */
+    width: 120px;
+    height: 40px;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    background-color: #ffc400;
+    color: white;
+    box-shadow: 0px 9.50103px 21.11339px -6.33402px #d8be6a;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0px 9.50103px 21.11339px -6.33402px #ae9646;
+    }
+  }
+}
 /* .progressBarRadio:checked + .progressBarRadioCustom {
   background-color: #ffc400;
 } */
 
 .quesAndAnsWrapperParent {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   width: 1000vw;
   display: flex;
-  overflow-x: scroll !important;
+  /* overflow-x: scroll !important; */
   /* transform: translate(-100vw); */
   transition: 0.5s ease-in-out;
 }
@@ -819,7 +856,7 @@ button#mainContentLeftBtn:hover {
 }
 .controlDiv {
   position: relative;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   padding: 10px 10px;
   width: 100%;
   /* box-shadow: 0px 0px 10.11339px 0px #ded7c4; */
@@ -830,27 +867,7 @@ button#mainContentLeftBtn:hover {
   border-radius: 10px;
   transition: 0.3s ease-in-out;
 }
-.finishBtnDiv {
-  position: absolute;
-  right: 10%;
-  transform: translate(300px);
-  transition: 0.5s;
 
-  #finishBtn {
-    padding: 10px 20px;
-    font-size: 17px;
-    font-weight: bold;
-    border: none;
-    background-color: #ffc400;
-    color: white;
-    box-shadow: 0px 9.50103px 21.11339px -6.33402px #d8be6a;
-    cursor: pointer;
-
-    &:hover {
-      box-shadow: 0px 9.50103px 21.11339px -6.33402px #ae9646;
-    }
-  }
-}
 .timerDiv {
   width: 70px;
   height: 70px;
@@ -892,7 +909,7 @@ button#mainContentLeftBtn:hover {
   bottom: 0%;
   right: 0%;
   left: 0%;
-  background-color: rgba(0, 0, 0, 0.267);
+  background-color: white;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -908,7 +925,7 @@ button#mainContentLeftBtn:hover {
   display: flex;
   flex-direction: column;
   width: 70%;
-  height: 80%;
+  height: 100%;
   background-color: white;
 }
 .resultDivChildWrapper {
@@ -1063,6 +1080,9 @@ button#mainContentLeftBtn:hover {
   .navHamContentDiv {
     display: none !important;
   }
+  .forShadow {
+    overflow: hidden;
+  }
 }
 @media screen and (max-width: 1000px) {
   .mainContentRight {
@@ -1137,6 +1157,8 @@ button#mainContentLeftBtn:hover {
     height: fit-content;
   }
   .choosetopicsDetail {
+    overflow-y: scroll;
+
     height: 100%;
   }
   .controlDiv {

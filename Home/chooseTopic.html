@@ -10,7 +10,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
-<body>
+<body data-aos="fade-In">
 
 
     <nav>
@@ -21,11 +21,13 @@
             <ul>
                 <li>Home <p class="activenavContentDivP"></p>
                 </li>
-                <li>About Us <p></p>
-                </li>
+                <!-- <a href="../Home/aboutUs.html">
+                    <li>About Us <p></p>
+                    </li>
+                </a> -->
                 <h2 id="navUser"><i class="fa-solid fa-user" style="color: #ffc400;"></i>
-                    <p><span id="navUserName">Sharique</span><i class="fa-solid fa-caret-down"
-                            style="color: #ffc400;"></i></p>
+                    <p><span id="navUserName">User</span><i class="fa-solid fa-caret-down" style="color: #ffc400;"></i>
+                    </p>
                 </h2>
             </ul>
         </div>
@@ -47,7 +49,7 @@
             </div>
             <a href="./Home/login.html"><button id="navLoginBtn">Login</button></a>
         </div>
-        <img src="../images/mainBottomDesign.svg" alt="" class="mainContentBottomDesign">
+        <!-- <img src="../images/mainBottomDesign.svg" alt="" class="mainContentBottomDesign"> -->
 
         <div class="choosetopicsDetail">
             <div class="forShadow">
@@ -65,7 +67,8 @@
                         <h1>Details</h1>
                         <h3>
                             <span class="detailSpan1">Date:</span>
-                            <span class="detailSpan2">Friday, June 10, 2022</span>
+                            <span class="detailSpan2"> <span id="dateSpan"></span> <span id="liveTimeSpan"></span>
+                            </span>
                         </h3>
                         <h3>
                             <span class="detailSpan1">Time Limit:</span>
@@ -86,7 +89,7 @@
                     <div class="choosetopicsRightImgDiv">
                         <img src="../images/loginRightLogo.svg" alt="" class="loginMainRightImg">
                     </div>
-                    <h1>Hi, <span style="color: #ffc400;" id="welcomeUserName"> Sharique</span></h1>
+                    <h1>Hi, <span style="color: #ffc400;" id="welcomeUserName"> User</span></h1>
                     <p> Welcome to <img src="../images/NavLogo.svg" alt=""></p>
                     <a href="#" onclick="showTopics()">Choose Topics</a>
                     <!-- <div class="choosetopicsRightContent">
@@ -121,7 +124,7 @@
                 <img src="../images/mainBottomDesign.svg" alt="" class="quesAndAnsParentDesign">
                 <div class="questionAnswerDiv">
                     <div class="quesAndAnsWrapperParent" id="qAndAParent">
-                        <div class="quesAndAnsWrapper" key="1">
+                        <!-- <div class="quesAndAnsWrapper" key="1">
                             <div class="questionDiv">
                                 <h3>1st</h3>
                             </div>
@@ -215,7 +218,7 @@
                                     SKETCH
                                 </h4>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="questionTrack">
                         <!-- <div class="backline"></div> -->
@@ -245,6 +248,9 @@
                             <label for="10" class="progressBarRadioCustom"></label>
 
                             <div id="nextBtn">Next</div>
+                            <div class="finishBtnDiv">
+                                <button id="finishBtn" onclick="finishBtnFunc()">Finish</button>
+                            </div>
                         </div>
 
                         <div class="controlDiv">
@@ -252,9 +258,6 @@
                                 <div class="timerDiv">
                                     <span id="timer" class="timerSpan"></span>
                                 </div>
-                            </div>
-                            <div class="finishBtnDiv">
-                                <button id="finishBtn" onclick="finishBtnFunc()">Finish</button>
                             </div>
                         </div>
                     </div>
@@ -278,7 +281,7 @@
                 </div>
                 <div class="detailDivParent">
                     <div class="detailDivChild">
-                        <div class="detailDivChildSub">
+                        <!-- <div class="detailDivChildSub">
                             <h1 id="detailQuestion">Q.1 <span id="detailQuestionSpan"> What is the result of 5 +
                                     3?</span>
                             </h1>
@@ -299,7 +302,7 @@
                                 <p class="detailDivAnswer">6</p>
                                 <p class="detailDivAnswer">9</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -310,7 +313,7 @@
                 </div>
                 <div class="ResultBtnDivRight">
                     <button id="tryAgainBtn" onclick="tryAgainBtnFunc()">Try Again</button>
-                    <button id="completeBtn" onclick="completeBtnFunc()">Complete</button>
+                    <!-- <button id="completeBtn" onclick="completeBtnFunc()">Complete</button> -->
                 </div>
             </div>
         </div>
